@@ -7,13 +7,12 @@ require 'index.php';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="//cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css">
     <title>Document</title>
 </head>
 <body>
-    <div class="container">
-        <table class="table table-striped table-hover table-bordered">
-            <thead class="table-info">
+    <div class="">
+        <table class="table table-striped table-hover table-bordered" id="myTable">
+            <thead class="table">
                 <tr>
                 <th scope="col">S.No</th>
                 <th scope="col">Ticket No</th>
@@ -32,6 +31,7 @@ require 'index.php';
                         create_datetime
                     from
                         ticket_details
+                        order by create_datetime desc
                     ";
                 $data = mysqli_query($connection, $query);
                 $s_no = 0;
@@ -50,10 +50,13 @@ require 'index.php';
             </tbody>
         </table>
     </div>
-
-    <script src="//cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js">
-      let table = new DataTable('#myTable');
+    
+    <script>
+        $(document).ready( function () {
+            $('#myTable').DataTable();
+        });
     </script>
+    
 </body>
 </html>
 
