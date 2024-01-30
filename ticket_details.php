@@ -10,6 +10,9 @@ require 'index.php';
     <title>Document</title>
 </head>
 <body>
+    <div class="h2_header">
+        <h2>Ticket Details</h2>
+    </div>
     <div class="">
         <table class="table table-striped table-hover table-bordered" id="myTable">
             <thead class="table">

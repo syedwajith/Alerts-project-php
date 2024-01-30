@@ -10,6 +10,9 @@ require 'index.php';
     <title></title>
 </head>
 <body>
+    <div class="h2_header">
+        <h2>Mail Queue Details</h2>
+    </div>
     <div class="">
         <table class="table table-striped table-hover table-bordered" id="myTable">
             <thead class="table">

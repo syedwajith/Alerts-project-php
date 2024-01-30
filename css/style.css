@@ -5,3 +5,12 @@
     font-weight: bold;
     text-transform: uppercase;
 }
+
+.h2_header {
+    text-align: center;
+    margin: 2vh;
+}
+
+.label-bold {
+    font-weight: 500;
+}
