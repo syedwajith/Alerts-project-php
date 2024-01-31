@@ -1,5 +1,21 @@
 <?php
 require 'index.php';
+
+// Get ticket details
+function get_ticket_details($connection) {
+    $query = "
+        select
+            ticket_number,
+            subject,
+            message_body,
+            create_datetime
+        from
+            ticket_details
+            order by create_datetime desc";
+    $data = mysqli_query($connection, $query);
+
+    return $data;
+}
 ?>
 
 <!DOCTYPE html>
@@ -26,19 +42,9 @@ require 'index.php';
             </thead>
             <tbody>
                 <?php
-                $query = "
-                    select
-                        ticket_number,
-                        subject,
-                        message_body,
-                        create_datetime
-                    from
-                        ticket_details
-                        order by create_datetime desc
-                    ";
-                $data = mysqli_query($connection, $query);
+                $ticket_details_data = get_ticket_details($connection);
                 $s_no = 0;
-                while ($row = mysqli_fetch_assoc($data)) {
+                while ($row = mysqli_fetch_assoc($ticket_details_data)) {
                     $s_no += 1;
                     echo "<tr>
                             <th scope='row'>$s_no</th>

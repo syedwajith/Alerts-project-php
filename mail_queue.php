@@ -1,5 +1,27 @@
 <?php
 require 'index.php';
+
+// Get mail queue details
+function get_mail_queue_data($connection) {
+    $query = "
+        select
+            type,
+            server_name,
+            subject,
+            message_body,
+            hold,
+            corrupt,
+            deferred,
+            active,
+            incoming,
+            create_datetime
+        from
+            mail_queue
+            order by create_datetime desc";
+    $mail_queue_details = mysqli_query($connection, $query);
+
+    return $mail_queue_details;
+}
 ?>
 
 <!DOCTYPE html>
@@ -32,25 +54,9 @@ require 'index.php';
             </thead>
             <tbody>
                 <?php
-                $query = "
-                    select
-                        type,
-                        server_name,
-                        subject,
-                        message_body,
-                        hold,
-                        corrupt,
-                        deferred,
-                        active,
-                        incoming,
-                        create_datetime
-                    from
-                        mail_queue
-                        order by create_datetime desc
-                    ";
-                $data = mysqli_query($connection, $query);
+                $mail_queue_data = get_mail_queue_data($connection);
                 $s_no = 0;
-                while ($row = mysqli_fetch_assoc($data)) {
+                while ($row = mysqli_fetch_assoc($mail_queue_data)) {
                     $s_no += 1;
                     echo "<tr>
                             <th scope='row'>$s_no</th>
