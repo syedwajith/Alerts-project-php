@@ -43,13 +43,27 @@ function get_top_10alerts($connection) {
     $top_alert_arr = array();
     while ($row = mysqli_fetch_assoc($top_alert_data)) {
         $top_alert_arr[] = array($row["customer_name"], $row["alert_type"]);
-        }
-    for ($i = 0; $i < count($top_alert_arr); $i++) {
-        for ($j = 0; $j < count($top_alert_arr[$i]); $j++) {
-            echo $top_alert_arr[$i][$j];
-            echo "<br>";
+    }
+
+    $top_alert_details = array();
+    foreach ($top_alert_arr as list($i, $j)) {
+        if (!isset($top_alert_details[$i])) {
+            $top_alert_details[$i] = [];
+            if (!isset($top_alert_details[$i][$j])) {
+                $top_alert_details[$i][$j] = 1;
+            } else {
+                $top_alert_details[$i][$j]++;
+            }
+        } else {
+            if (!isset($top_alert_details[$i][$j])) {
+                $top_alert_details[$i][$j] = 1;
+            } else {
+                $top_alert_details[$i][$j]++;
+            }
         }
     }
+
+    return $top_alert_details;
 }
 ?>
 
@@ -128,17 +142,18 @@ function get_top_10alerts($connection) {
                 <?php
                 $top_alerts_data = get_top_10alerts($connection);
                 $s_no = 0;
-                while ($row) {
-                    $s_no += 1;
-                    echo "<tr>
-                            <th scope='row'>$s_no</th>
-                            <td>" . $row['customer_name'] . "</td>
-                            <td>" . $row['alert_type'] . "</td>
-                            <td>" . $row['alert_type'] . "</td>
-                        </tr>";
-                }
+                foreach ($top_alerts_data as $customer_name => $alerts) {
+                    foreach ($alerts as $alert_name => $count) {
+                        $s_no += 1;
+                        echo "<tr>
+                                <th scope='row'>$s_no</th>
+                                <td>" . $customer_name . "</td>
+                                <td>" . $alert_name . "</td>
+                                <td>" . $count . "</td>
+                            </tr>";
+                    }
+                }   
                 ?>
-
             </tbody>
         </table>
     </div>

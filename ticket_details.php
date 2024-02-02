@@ -68,4 +68,3 @@ function get_ticket_details($connection) {
     
 </body>
 </html>
-

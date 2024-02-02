@@ -13,6 +13,6 @@ function db_connection(){
     }
 }
 
-db_connection()
+db_connection();
 
 ?>
