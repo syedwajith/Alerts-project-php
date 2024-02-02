@@ -26,7 +26,11 @@ function alert_detail($connection, $customer_name, $alert_type, $from_date, $to_
     return $alert_detail_data;
 }
 var_dump($_SERVER["REQUEST_METHOD"]);
+<<<<<<< HEAD
 if ($_SERVER(["REQUEST_METHOD"] == "POST")) {
+=======
+if $_SERVER(["REQUEST_METHOD"] == "POST") {
+>>>>>>> f44621e7fd66dd6a60865aa046494ead1389b1ab
     $customer_name = htmlspecialchars($_POST["customer_name"]);
     $alert_type = htmlspecialchars($_POST["alert_type"]);
     $from_date = htmlspecialchars($_POST["from_date"]);
@@ -96,4 +100,8 @@ if ($_SERVER(["REQUEST_METHOD"] == "POST")) {
         });
     </script>
 </body>
+<<<<<<< HEAD
 </html>
+=======
+</html>
+>>>>>>> f44621e7fd66dd6a60865aa046494ead1389b1ab
