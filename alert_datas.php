@@ -32,10 +32,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $alert_type = htmlspecialchars($_POST["alert_type"]);
     $from_date = htmlspecialchars($_POST["from_date"]);
     $to_date = htmlspecialchars($_POST["to_date"]);
-    $_POST["customer_name"] = "";
-    $_POST["alert_type"] = "";
-    $_POST["from_date"] = "";
-    $_POST["to_date"] = "";
     $datas = alert_detail($connection, $customer_name, $alert_type, $from_date, $to_date);
 }
 ?>

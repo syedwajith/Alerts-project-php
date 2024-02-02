@@ -83,7 +83,7 @@ function get_top_10alerts($connection) {
             <div class="mb-3 row">
                 <label class="col-sm-2 col-form-label label-bold">Customer Name</label>
                 <div class="col-sm-10">
-                    <select class="form-select" aria-label="Default select example" name="customer_name" required>
+                    <select class="form-select" aria-label="Default select example" name="customer_name" id="customer_name" required>
                         <option selected></option>
                         <?php
                         $customer_names = get_customer_names($connection);
@@ -97,7 +97,7 @@ function get_top_10alerts($connection) {
             <div class="mb-3 row">
                 <label class="col-sm-2 col-form-label label-bold">Alert Type</label>
                 <div class="col-sm-10">
-                    <select class="form-select" aria-label="Default select example" name="alert_type" required>
+                    <select class="form-select" aria-label="Default select example" name="alert_type" id="alert_type" required>
                     <option selected></option>
                         <?php
                         $alert_type_names = get_alert_types($connection);
@@ -111,16 +111,16 @@ function get_top_10alerts($connection) {
             <div class="mb-3 row">
                 <label class="col-sm-2 col-form-label label-bold">From Date</label>
                 <div class="col-sm-3">
-                    <input type="date" class="form-control" id="date" name="from_date" required/>
+                    <input type="date" class="form-control" id="date" name="from_date" id="from_date" required/>
                 </div>
                 <div class="col-sm-2"></div>
                 <label class="col-sm-2 col-form-label label-bold">To Date</label>
                 <div class="col-sm-3">
-                    <input type="date" class="form-control" id="date" name="to_date" required/>
+                    <input type="date" class="form-control" id="date" name="to_date" id="to_date" required/>
                 </div>
             </div>
             <div class="d-grid gap-2 col-6 mx-auto">
-                <button class="btn btn-primary" type="submit">Submit</button>
+                <button class="btn btn-primary" type="submit" id="btn">Submit</button>
             </div>
         </div>
     </form>
@@ -163,6 +163,5 @@ function get_top_10alerts($connection) {
             $('#myTable').DataTable();
         });
     </script>
-    
 </body>
 </html>
